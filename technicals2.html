@@ -1,0 +1,484 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Technicals</title>
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+</head>
+
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-75065234-3', 'auto');
+			ga('send', 'pageview', '/0288eb9e-46ac-46c9-b6db-2c5dcbff1a67.html');
+		</script>
+
+
+    <style>
+    .form-submit {
+      display: inline-block;
+      background: #6dabe4;
+      color: #fff;
+      border-bottom: none;
+      width: auto;
+      padding: 15px 39px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      margin-top: 25px;
+      cursor: pointer; }
+      .form-submit:hover {
+        background: #4292dc; }
+    </style>
+    
+  </head>
+
+
+  <body>
+
+    <h1 style="font-size:40px;" id="PageTitle">Facebook Inc (FB) - 24 Hours</h1>
+
+<!-- Chart code -->
+<!--Loads year 1 data by default-->
+<script>
+    am4core.ready(function () {
+        load1Day();
+    });
+</script>
+
+<!--Loads common data and axes for all time periods-->
+<script>
+    function loadCommonalities(chart, dateAxis) {
+
+        window.valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.tooltip.disabled = true;
+        valueAxis.fontSize = 35;
+        valueAxis.extraMax = 0.2;
+
+        valueAxis.fill = am4core.color("#000000");
+
+        var series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.dateX = "year";
+        series.name = "Google";
+        series.dataFields.valueY = "Google";
+        series.tooltipText = "[#000]{valueY.value}[/]";
+        series.tooltip.background.fill = am4core.color("#FFF");
+        series.tooltip.getStrokeFromObject = true;
+        series.tooltip.background.strokeWidth = 3;
+        series.tooltip.scale = 4;
+        series.tooltip.getFillFromObject = false;
+        series.fillOpacity = 0.9;
+        series.strokeWidth = 2;
+        series.stacked = true;
+
+    }
+</script>
+
+
+<!--Load 1 Year data-->
+<script>
+
+    //Loads data for 1 day
+    function load1Day() {
+        document.getElementById("PageTitle").innerHTML = "Facebook Inc (FB) - 24 Hours";
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        //Hard-coded chart data
+        chart.data = [{
+            "year": "09:00",
+            "Google": 189.63,
+        }, {
+            "year": "09:30",
+            "Google": 176.48,
+        }, {
+            "year": "10:00",
+            "Google": 178.57,
+        }, {
+            "year": "10:30",
+            "Google": 180.35,
+        }, {
+            "year": "11:30",
+            "Google": 171.72,
+        }, , {
+            "year": "12:30",
+            "Google": 173.72,
+        }, {
+            "year": "13:00",
+            "Google": 172.72,
+        }, {
+            "year": "14:00",
+            "Google": 178.72,
+        }, {
+            "year": "14:30",
+            "Google": 184.72,
+        },
+        {
+            "year": "15:00",
+            "Google": 181.72,
+        }, {
+            "year": "15:30",
+            "Google": 180.30,
+        }, {
+            "year": "16:00",
+            "Google": 185.30,
+        }
+
+        ];
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.xAxis = dateAxis;
+        chart.scrollbarX = new am4core.Scrollbar();
+
+
+        am4core.useTheme(am4themes_animated);
+
+        chart.dateFormatter.inputDateFormat = "HH:mm";
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.fontSize = 35;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.5;
+        dateAxis.baseInterval = {
+            timeUnit: "minute",
+            count: 30
+        }
+
+        //Shared commonalities with all graphs - takes chart data and axis labels
+        loadCommonalities(chart, dateAxis);
+
+        //Individual scalars
+        valueAxis.min = 160;
+        valueAxis.max = 190;
+    }
+
+    //Loads data for 5 day
+    function load5Day() {
+        document.getElementById("PageTitle").innerHTML = "Facebook Inc (FB) - 5 Days";
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        //Hard-coded chart data
+        chart.data = [{
+            "year": "01-01-12:00",
+            "Google": 180.96,
+        }, {
+            "year": "01-01-15:30",
+            "Google": 170.56,
+        }, {
+            "year": "01-02-09:00",
+            "Google": 150.74,
+        }, {
+            "year": "01-02-16:00",
+            "Google": 190.78,
+        }, {
+            "year": "01-03-09:00",
+            "Google": 145.21,
+        }, {
+            "year": "01-03-16:00",
+            "Google": 155.66,
+        }, {
+            "year": "01-04-09:00",
+            "Google": 158.39,
+        }, {
+            "year": "01-04-16:00",
+            "Google": 159.22,
+        }, {
+            "year": "01-05-12:00",
+            "Google": 165.48,
+        }, {
+            "year": "01-05-16:00",
+            "Google": 177.48,
+        },
+        ];
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.xAxis = dateAxis;
+        chart.scrollbarX = new am4core.Scrollbar();
+
+
+        am4core.useTheme(am4themes_animated);
+
+        chart.dateFormatter.inputDateFormat = "MM-dd-HH:mm";
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.fontSize = 35;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.5;
+        dateAxis.baseInterval = {
+            timeUnit: "hour",
+            count: 12
+        }
+
+        //Shared commonalities with all graphs - takes chart data and axis labels
+        loadCommonalities(chart, dateAxis);
+
+        //Individual scalars
+        valueAxis.min = 140;
+        valueAxis.max = 210;
+    }
+
+    //Loads data for 1 month
+    function load1Month() {
+        document.getElementById("PageTitle").innerHTML = "Facebook Inc (FB) - 1 Month";
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        //Hard-coded chart data
+        chart.data = [{
+            "year": "01-01",
+            "Google": 150.96,
+        }, {
+            "year": "01-04",
+            "Google": 155.26,
+        }, {
+            "year": "01-07",
+            "Google": 148.38,
+        }, {
+            "year": "01-10",
+            "Google": 171.77,
+        }, {
+            "year": "01-13",
+            "Google": 166.11,
+        }, {
+            "year": "01-17",
+            "Google": 165.01,
+        }, {
+            "year": "01-20",
+            "Google": 148.44,
+        }, {
+            "year": "01-24",
+            "Google": 187.15,
+        }, {
+            "year": "01-27",
+            "Google": 190.56,
+        }, {
+            "year": "01-30",
+            "Google": 185.67,
+        }
+        ];
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.xAxis = dateAxis;
+        chart.scrollbarX = new am4core.Scrollbar();
+
+
+        am4core.useTheme(am4themes_animated);
+
+        chart.dateFormatter.inputDateFormat = "MM-dd";
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.fontSize = 35;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.5;
+        dateAxis.baseInterval = {
+            timeUnit: "day",
+            count: 5
+        }
+
+        //Shared commonalities with all graphs - takes chart data and axis labels
+        loadCommonalities(chart, dateAxis);
+
+        //Individual scalars
+        valueAxis.min = 130;
+        valueAxis.max = 240;
+    }
+
+
+    //Loads data for 3 month
+    function load3Month() {
+        document.getElementById("PageTitle").innerHTML = "Facebook Inc (FB) - 3 Month";
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        //Hard-coded chart data
+        chart.data = [{
+            "year": "01-01",
+            "Google": 122.96,
+        }, {
+            "year": "01-15",
+            "Google": 124.26,
+        }, {
+            "year": "01-30",
+            "Google": 123.38,
+        }, {
+            "year": "02-01",
+            "Google": 128.77,
+        }, {
+            "year": "02-15",
+            "Google": 132.11,
+        }, {
+            "year": "02-25",
+            "Google": 135.01,
+        }, {
+            "year": "03-01",
+            "Google": 140.44,
+        }, {
+            "year": "03-15",
+            "Google": 144.15,
+        }, {
+            "year": "03-30",
+            "Google": 150.56,
+        }
+        ];
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.xAxis = dateAxis;
+        chart.scrollbarX = new am4core.Scrollbar();
+
+
+        am4core.useTheme(am4themes_animated);
+
+        chart.dateFormatter.inputDateFormat = "MM-dd";
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.fontSize = 35;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.5;
+        dateAxis.baseInterval = {
+            timeUnit: "day",
+            count: 5
+        }
+
+        //Shared commonalities with all graphs - takes chart data and axis labels
+        loadCommonalities(chart, dateAxis);
+
+        //Individual scalars
+        valueAxis.min = 120;
+        valueAxis.max = 180;
+    }
+
+    //Loads data for year
+    function load1Year() {
+        document.getElementById("PageTitle").innerHTML = "Facebook Inc (FB) - 1 Year";
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+        //Hard-coded chart data
+        chart.data = [{
+            "year": "Sep-2018",
+            "Google": 150.26,
+        }, {
+            "year": "Oct-2018",
+            "Google": 155.31,
+        }, {
+            "year": "Nov-2018",
+            "Google": 159,
+        }, {
+            "year": "Dec-2018",
+            "Google": 163.43,
+        }, {
+            "year": "Jan-2019",
+            "Google": 120.85,
+        }, {
+            "year": "Feb-2019",
+            "Google": 121.75,
+        }, {
+            "year": "Mar-2019",
+            "Google": 122.99,
+        }, {
+            "year": "Apr-2019",
+            "Google": 135.43,
+        }, {
+            "year": "May-2019",
+            "Google": 140.08,
+        }, {
+            "year": "Jun-2019",
+            "Google": 145.05,
+        }, {
+            "year": "Jul-2019",
+            "Google": 148.95,
+        }, {
+            "year": "Aug-2019",
+            "Google": 155.01,
+        }, {
+            "year": "Sep-2019",
+            "Google": 175.39,
+        }
+        ];
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.xAxis = dateAxis;
+        chart.scrollbarX = new am4core.Scrollbar();
+
+
+        am4core.useTheme(am4themes_animated);
+
+        chart.dateFormatter.inputDateFormat = "MM-year";
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.fontSize = 35;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.5;
+        dateAxis.baseInterval = {
+            timeUnit: "month",
+            count: 1
+        }
+
+        //Shared commonalities with all graphs - takes chart data and axis labels
+        loadCommonalities(chart, dateAxis);
+        //Individual scalars
+        valueAxis.min = 120;
+        valueAxis.max = 190;
+    }
+
+</script>
+
+
+
+
+<!-- HTML -->
+<div id="chartdiv" style="position: relative;"><div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1513px; height: 575px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div><div style="width: 100%; height: 100%; position: relative; top: -0.0999985px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="group" style="width: 100%; height: 100%; overflow: visible;"><desc>JavaScript chart by amCharts</desc><defs><clippath id="id-45"><rect width="1503" height="565"></rect></clippath><lineargradient id="gradient-id-64" x1="1%" x2="99%" y1="59%" y2="41%"><stop stop-color="#474758" offset="0"></stop><stop stop-color="#474758" stop-opacity="1" offset="0.75"></stop><stop stop-color="#3cabff" stop-opacity="1" offset="0.755"></stop></lineargradient><clippath id="id-74"><rect width="1400" height="444.59"></rect></clippath><filter id="filter-id-101" width="200%" height="200%" x="-50%" y="-50%"></filter><filter id="filter-id-122" width="200%" height="200%" x="-50%" y="-50%"></filter><clippath id="id-155"><path d="M0,0 L1400,0 L1400,444.59 L0,444.59 L0,0"></path></clippath><clippath id="id-374"><rect width="1400" height="444.59"></rect></clippath><filter id="filter-id-50" width="200%" height="200%" x="-50%" y="-50%"><fegaussianblur result="blurOut" in="SourceGraphic" stdDeviation="1.5"></fegaussianblur><feoffset result="offsetBlur" dx="1" dy="1"></feoffset><feflood flood-color="#000000" flood-opacity="0.5"></feflood><fecomposite in2="offsetBlur" operator="in"></fecomposite><femerge><femergenode></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter><filter id="filter-id-61" width="120%" height="120%" x="-10%" y="-10%"><fecolormatrix type="saturate" values="0"></fecolormatrix></filter><filter id="filter-id-160" width="200%" height="200%" x="-50%" y="-50%"><fegaussianblur result="blurOut" in="SourceGraphic" stdDeviation="0.375"></fegaussianblur><feoffset result="offsetBlur" dx="0.25" dy="0.25"></feoffset><feflood flood-color="#000000" flood-opacity="0.5"></feflood><fecomposite in2="offsetBlur" operator="in"></fecomposite><femerge><femergenode></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter></defs><g><g fill="#ffffff" fill-opacity="0"><rect width="1503" height="565"></rect></g><g><g role="region" clip-path="url(&quot;#id-45&quot;)" opacity="1" aria-describedby="id-22-description"><g transform="translate(15,15)"><g><g><g><g><g transform="translate(0,32)"><g><g transform="translate(73,0)" style="touch-action: none; user-select: none; -webkit-user-drag: none;"><g fill="#ffffff" fill-opacity="0"><rect width="1400" height="444.59"></rect></g><g><g><g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,555.7)" display="none"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,500.2)" display="none"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,444.6)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,389)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,333.4)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,277.9)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,222.3)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,166.7)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,111.1)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,55.6)"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(0,-55.6)" display="none"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g></g></g><g><g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(-250,0)" display="none"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(-150,0)" display="none"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(-50,0)" display="none"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(50,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(150,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(250,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(350,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(450.00000000000006,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(550,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(650,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(750,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(849.9999999999999,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(950,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(1050,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(1150,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(1250,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(1350,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" transform="translate(1450.0000000000002,0)" display="none"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g></g></g><g><g><g role="group" stroke-opacity="1" fill-opacity="0.9" fill="#6794dc" stroke="#6794dc" aria-describedby="id-150-description" stroke-width="2" id="id-150"><g><g clip-path="url(&quot;#id-155&quot;)"><g><g><g><g fill="#6794dc" fill-opacity="0.9" stroke="#6794dc" stroke-opacity="1" stroke-width="2" style="pointer-events: none;"><g><g stroke-opacity="0"><path d=" M-0.2,115.1  M0,115.3  L0,115.3  L0,115.3  L100,261.4  L200,238.2  L300,218.4  L500,314.3  L700,292.1  L800,303.2  L1000,236.5  L1100,169.8  L1200,203.2  L1300,219  L1400,163.4  L1400,2223  L1400,2223  L1400,2223  L1300,2223  L1200,2223  L1100,2223  L1000,2223  L800,2223  L700,2223  L500,2223  L300,2223  L200,2223  L100,2223  L0,2223  L0,115.3  Z"></path></g><g fill="none" fill-opacity="0"><path d=" M-0.2,115.1  M0,115.3  L0,115.3  L0,115.3  L100,261.4  L200,238.2  L300,218.4  L500,314.3  L700,292.1  L800,303.2  L1000,236.5  L1100,169.8  L1200,203.2  L1300,219  L1400,163.4 "></path></g></g></g></g></g></g></g><g></g></g><desc id="id-150-description">Google</desc></g></g></g><g clip-path="url(&quot;#id-374&quot;)"><g><g fill="#6794dc" stroke="#6794dc"><g></g></g></g></g><g><g><g><g></g></g><g><g></g></g></g></g><g><g></g></g><g><g></g></g><g opacity="1" clip-path="url(&quot;#id-74&quot;)" style="touch-action: none; user-select: none; -webkit-user-drag: none;"><g><g fill-opacity="0.2" fill="#000000" visibility="hidden" style="pointer-events: none;"><path></path></g><g stroke="#000000" fill="none" stroke-dasharray="3,3" stroke-opacity="0.4" style="pointer-events: none;" transform="translate(478.4,0)"><path d=" M0,0  L0,444.59 "></path></g><g stroke="#000000" fill="none" stroke-dasharray="3,3" stroke-opacity="0.4" style="pointer-events: none;" transform="translate(0,255.9)"><path d=" M0,0  L1400,0 "></path></g></g></g><g role="button" focusable="true" opacity="0" visibility="hidden" aria-hidden="true" transform="translate(1360,-3)" aria-labelledby="id-36-title"><g fill="#6794dc" stroke="#ffffff" fill-opacity="1" stroke-opacity="0" transform="translate(0,8)"><path d="M17,0 L18,0 a17,17 0 0 1 17,17 L35,17 a17,17 0 0 1 -17,17 L17,34 a17,17 0 0 1 -17,-17 L0,17 a17,17 0 0 1 17,-17 Z"></path></g><g transform="translate(9,9)"><g stroke="#ffffff" style="pointer-events: none;" transform="translate(0,8)"><path d=" M0,0  L11,0 " transform="translate(2.5,7.5)"></path></g><g fill="#000000" style="pointer-events: none;" transform="translate(17,8)"><g display="none"></g></g></g><title id="id-36-title">Zoom Out</title></g></g></g><g><g><g font-size="35" fill="#ffffff"><g><g fill="#ffffff" transform="translate(0,222.295) rotate(-90)"><g display="none"></g></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" opacity="0" visibility="hidden" aria-hidden="true"><path d=" M0,0  L1503,0 " transform="translate(-0.5,-0.5)"></path></g><g><g><g fill="#ffffff" fill-opacity="0" opacity="0" stroke-opacity="0" style="pointer-events: none;" transform="translate(73,222.3)"><g transform="translate(-63,-19.211)" style="user-select: none;"><text x="0" y="38.421875" dy="-10.374"><tspan>195</tspan></text></g></g><g fill="#ffffff" transform="translate(73,555.7)" display="none"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>150</tspan></text></g></g><g fill="#ffffff" transform="translate(73,500.2)" display="none"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>155</tspan></text></g></g><g fill="#ffffff" transform="translate(73,444.6)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>160</tspan></text></g></g><g fill="#ffffff" transform="translate(73,389)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>165</tspan></text></g></g><g fill="#ffffff" transform="translate(73,333.4)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>170</tspan></text></g></g><g fill="#ffffff" transform="translate(73,277.9)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>175</tspan></text></g></g><g fill="#ffffff" transform="translate(73,222.3)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>180</tspan></text></g></g><g fill="#ffffff" transform="translate(73,166.7)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>185</tspan></text></g></g><g fill="#ffffff" transform="translate(73,111.1)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>190</tspan></text></g></g><g fill="#ffffff" transform="translate(73,55.6)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>195</tspan></text></g></g><g fill="#ffffff" transform="translate(73,0)"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>200</tspan></text></g></g><g fill="#ffffff" transform="translate(73,-55.6)" display="none"><g transform="translate(-63,-19.203)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>205</tspan></text></g></g></g></g><g stroke="#bbbbbb" stroke-opacity="0" fill="none" style="pointer-events: none;" transform="translate(73,0)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g></g></g></g></g><g transform="translate(1473,0)"><g></g></g></g></g><g><g transform="translate(73,0)"><g role="scrollbar" aria-labelledby="id-75-title" transform="translate(0,10)"><g fill="#f3f3f3" fill-opacity="0.5"><path d="M6,0 L1394,0 a6,6 0 0 1 6,6 L1400,6 a6,6 0 0 1 -6,6 L6,12 a6,6 0 0 1 -6,-6 L0,6 a6,6 0 0 1 6,-6 Z"></path></g><g><g role="slider" focusable="true" aria-live="polite" aria-labelledby="id-89-title" aria-describedby="id-89-description" transform="translate(0,6)" style="touch-action: none; user-select: none; -webkit-user-drag: none; cursor: -webkit-grab;"><g fill="#d9d9d9" stroke="#ffffff" fill-opacity="1" stroke-opacity="1" transform="translate(0,-6)"><path d="M6,0 L1394,0 a6,6 0 0 1 6,6 L1400,6 a6,6 0 0 1 -6,6 L6,12 a6,6 0 0 1 -6,-6 L0,6 a6,6 0 0 1 6,-6 Z"></path></g><g transform="translate(0,-6)"><g fill="#000000" style="pointer-events: none;" transform="translate(700,6)"><g display="none"></g></g></g><title id="id-89-title">From 09:15 to 16:15</title><desc id="id-89-description">Use left and right arrows to move selection</desc></g><g role="slider" focusable="true" aria-labelledby="id-77-title" aria-describedby="id-77-description" transform="translate(0,6)" style="touch-action: none; user-select: none; -webkit-user-drag: none; cursor: ew-resize;"><g fill="#d9d9d9" stroke="#ffffff" fill-opacity="1" stroke-opacity="1" transform="translate(-14,-14)"><path d="M14,0 L14,0 a14,14 0 0 1 14,14 L28,14 a14,14 0 0 1 -14,14 L14,28 a14,14 0 0 1 -14,-14 L0,14 a14,14 0 0 1 14,-14 Z"></path></g><g transform="translate(-6,-12)"><g stroke="#ffffff" stroke-opacity="0.7" style="pointer-events: none;" transform="translate(2,12)"><path d=" M-2,-6  L-2,6  M2,-6  L2,6 " transform="translate(3.5,-0.5)"></path></g></g><title id="id-77-title">From 09:15</title><desc id="id-77-description">Use left and right arrows to move left selection</desc></g><g role="slider" focusable="true" aria-labelledby="id-83-title" aria-describedby="id-83-description" transform="translate(1400,6)" style="touch-action: none; user-select: none; -webkit-user-drag: none; cursor: ew-resize;"><g fill="#d9d9d9" stroke="#ffffff" fill-opacity="1" stroke-opacity="1" transform="translate(-14,-14)"><path d="M14,0 L14,0 a14,14 0 0 1 14,14 L28,14 a14,14 0 0 1 -14,14 L14,28 a14,14 0 0 1 -14,-14 L0,14 a14,14 0 0 1 14,-14 Z"></path></g><g transform="translate(-6,-12)"><g stroke="#ffffff" stroke-opacity="0.7" style="pointer-events: none;" transform="translate(2,12)"><path d=" M-2,-6  L-2,6  M2,-6  L2,6 " transform="translate(3.5,-0.5)"></path></g></g><title id="id-83-title">To 16:15</title><desc id="id-83-description">Use left and right arrows to move right selection</desc></g></g><title id="id-75-title">Use TAB to select grip buttons or left and right arrows to change selection</title></g></g></g><g transform="translate(0,476.59)"><g transform="translate(73,0)"><g font-size="35"><g><g stroke="#bbbbbb" stroke-opacity="0" fill="none" style="pointer-events: none;"><path d=" M0,0  L1400,0 " transform="translate(-0.5,-0.5)"></path></g><g><g><g fill="#ffffff" fill-opacity="0" opacity="0" stroke-opacity="0" style="pointer-events: none;"><g transform="translate(-11,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>L</tspan></text></g></g><g fill="#ffffff" transform="translate(-250,0)" display="none"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>08:00</tspan></text></g></g><g fill="#ffffff" transform="translate(-150,0)" display="none"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>08:30</tspan></text></g></g><g fill="#ffffff" transform="translate(-50,0)" display="none"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>09:00</tspan></text></g></g><g fill="#ffffff" transform="translate(50,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>09:30</tspan></text></g></g><g fill="#ffffff" transform="translate(150,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>10:00</tspan></text></g></g><g fill="#ffffff" transform="translate(250,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>10:30</tspan></text></g></g><g fill="#ffffff" transform="translate(350,0)"><g transform="translate(-39.5,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>11:00</tspan></text></g></g><g fill="#ffffff" transform="translate(450.00000000000006,0)"><g transform="translate(-39.5,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>11:30</tspan></text></g></g><g fill="#ffffff" transform="translate(550,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>12:00</tspan></text></g></g><g fill="#ffffff" transform="translate(650,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>12:30</tspan></text></g></g><g fill="#ffffff" transform="translate(750,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>13:00</tspan></text></g></g><g fill="#ffffff" transform="translate(849.9999999999999,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>13:30</tspan></text></g></g><g fill="#ffffff" transform="translate(950,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>14:00</tspan></text></g></g><g fill="#ffffff" transform="translate(1050,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>14:30</tspan></text></g></g><g fill="#ffffff" transform="translate(1150,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>15:00</tspan></text></g></g><g fill="#ffffff" transform="translate(1250,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>15:30</tspan></text></g></g><g fill="#ffffff" transform="translate(1350,0)"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>16:00</tspan></text></g></g><g fill="#ffffff" transform="translate(1450.0000000000002,0)" display="none"><g transform="translate(-40,10)" style="user-select: none;"><text x="0" y="38.40625" dy="-10.37"><tspan>16:30</tspan></text></g></g></g></g><g stroke="#bbbbbb" stroke-opacity="0.15" fill="none" display="none" transform="translate(0,-444.59)"><path d=" M0,0  L0,444.59 " transform="translate(-0.5,-0.5)"></path></g><g fill="#ffffff" transform="translate(700,58.40625)"><g display="none"></g></g></g></g></g></g></g></g></g></g></g><desc id="id-22-description">Chart</desc></g><g><g><g role="tooltip" opacity="0.258782375" transform="translate(588,361.3) scale(4)" aria-describedby="id-150"><g fill="#ffffff" fill-opacity="0.9" stroke-width="3" stroke-opacity="1" stroke="#eef3fb" filter="url(&quot;#filter-id-160&quot;)" style="pointer-events: none;" transform="translate(6,-16)"><path d="M3,0 L98,0 a3,3 0 0 1 3,3 L101,29 a3,3 0 0 1 -3,3 L3,32 a3,3 0 0 1 -3,-3 L0,29 L0,21 L-6,16 L0,11 L0,3 a3,3 0 0 1 3,-3"></path></g><g><g fill="#ffffff" style="pointer-events: none;" transform="translate(56.5,-16)"><g transform="translate(-38.5,7)" style="user-select: none;"><foreignobject width="77" height="21"><div style="white-space: nowrap; color: rgb(255, 255, 255); display: block;"><img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1.png" style="vertical-align:bottom; margin-right: 10px; width:28px; height:21px;"><span style="font-size:14px; color:#000000;"><b>171.72</b></span></div></foreignobject></g></g></g></g><g role="tooltip" visibility="hidden" opacity="0"><g fill="#ffffff" fill-opacity="0.9" stroke-width="1" stroke-opacity="1" stroke="#ffffff" filter="url(&quot;#filter-id-50&quot;)" style="pointer-events: none;" transform="translate(0,6)"><path d="M3,0 L3,0 L0,-6 L13,0 L21,0 a3,3 0 0 1 3,3 L24,8 a3,3 0 0 1 -3,3 L3,11 a3,3 0 0 1 -3,-3 L0,3 a3,3 0 0 1 3,-3"></path></g><g><g fill="#ffffff" style="pointer-events: none;" transform="translate(12,6)"><g transform="translate(0,7)" display="none"></g></g></g></g><g visibility="hidden" display="none" style="pointer-events: none;"><g fill="#ffffff" opacity="1"><rect width="1503" height="565"></rect></g><g><g transform="translate(751.5,282.5)"><g><g stroke-opacity="1" fill="#f3f3f3" fill-opacity="0.8"><g><g><path d=" M53,0  a53,53,0,0,1,-106,0 a53,53,0,0,1,106,0 M42,0  a42,42,0,0,0,-84,0 a42,42,0,0,0,84,0 L42,0 "></path></g></g></g><g stroke-opacity="1" fill="#000000" fill-opacity="0.2"><g><g><path d=" M50,0  a50,50,0,0,1,-100,0 a50,50,0,0,1,100,0 M45,0  a45,45,0,0,0,-90,0 a45,45,0,0,0,90,0 L45,0 "></path></g></g></g><g fill="#000000" fill-opacity="0.4"><g transform="translate(-19,-8.8047)" style="user-select: none;"><text x="0" y="17.609375" dy="-4.755"><tspan>100%</tspan></text></g></g></g></g></g></g><g opacity="0.3" aria-labelledby="id-61-title" filter="url(&quot;#filter-id-61&quot;)" style="cursor: pointer;" transform="translate(0,544)"><g fill="#ffffff" opacity="0"><rect width="66" height="21"></rect></g><g><g shape-rendering="auto" fill="none" stroke-opacity="1" stroke-width="1.7999999999999998" stroke="#3cabff"><path d=" M15,15  C17.4001,15 22.7998,15.0001 27,15 C31.2002,14.9999 33.2999,6 36,6 C38.7001,6 38.6999,10.5 40.5,10.5 C42.3001,10.5 42.2999,6 45,6 C47.7001,6 50.9999,14.9999 54,15 C57.0002,15.0001 58.7999,15 60,15"></path></g><g shape-rendering="auto" fill="none" stroke-opacity="1" stroke-width="1.7999999999999998" stroke="url(&quot;#gradient-id-64&quot;)"><path d=" M6,15  C8.2501,15 9.7498,15.0001 15,15 C20.2502,14.9999 20.7748,3.6 27,3.6 C33.2252,3.6 33.8998,14.9999 39.9,15 C45.9002,15.0001 45.9748,15 51,15 C56.0252,15 57.7499,15 60,15"></path></g></g><title id="id-61-title">Chart created using amCharts library</title></g><g role="tooltip" opacity="0.214946734375" transform="translate(588,491.59)"><g fill="#ffffff" fill-opacity="1" stroke-width="1" stroke-opacity="1" stroke="#ffffff" style="pointer-events: none;" transform="translate(-28,5)"><path d="M0,0 L23,0 L28,-5 L33,0 L56,0 a0,0 0 0 1 0,0 L56,27.609 a0,0 0 0 1 -0,0 L0,27.609 a0,0 0 0 1 -0,-0 L0,0 a0,0 0 0 1 0,-0"></path></g><g><g fill="#000000" style="pointer-events: none;" transform="translate(0,5)"><g transform="translate(-18,5)" style="user-select: none;"><text x="0" y="17.609375" dy="-4.755"><tspan>11:30</tspan></text></g></g></g></g><g role="tooltip" visibility="hidden" opacity="0" display="none" transform="translate(88,302.9)"><g fill="#ffffff" fill-opacity="1" stroke-width="1" stroke-opacity="1" stroke="#ffffff" style="pointer-events: none;"><path></path></g><g><g fill="#000000" style="pointer-events: none;"><g transform="translate(0,5)"></g></g></g></g></g></g></g></g></svg></div></div>
+
+
+<script>
+  function playSound(){
+       var audio = document.getElementById("tune");
+       audio.play();
+                 }
+   </script>
+
+   <script>
+        function playVoice(){
+             var audio = document.getElementById("audio");
+             audio.play();
+                       }
+         </script>
+
+<audio id="tune" src="sounds/fb - 5d.mpeg" ></audio>
+<audio id="audio" src="sounds/fb-5day.mpeg" ></audio>
+<!--loads buttons with listeners-->
+<div>
+  <button type="button" class="form-submit" onclick="load1Day()" name="1Day" class="buttons">1D</button>
+  <button type="button" class="form-submit" onclick="load5Day()" name="5Day" class="buttons">5D</button>
+  <button type="button" class="form-submit" onclick="load1Month()" name="1Month" class="buttons">1M</button>
+  <button type="button" class="form-submit" onclick="load3Month()" name="3Month" class="buttons">3M</button>
+  <button type="button" class="form-submit" onclick="load1Year()" name="YTD" class="buttons">YTD</button>
+
+  <button type="button" class="form-submit" onclick="playSound()" name="play" class="buttons">Play Tune</button>
+
+  <button type="button" class="form-submit" onclick="playVoice()" name="play" class="buttons">Read Chart</button>
+
+</div>
+
+
+<div hidden=""><div style="width: 100%; height: 100%; position: relative;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="group" style="width: 100%; height: 100%; overflow: visible;"><desc>JavaScript chart by amCharts</desc><defs><clippath id="id-142"><path></path></clippath><filter id="filter-id-147" width="200%" height="200%" x="-50%" y="-50%"><fegaussianblur result="blurOut" in="SourceGraphic" stdDeviation="1.5"></fegaussianblur><feoffset result="offsetBlur" dx="1" dy="1"></feoffset><feflood flood-color="#000000" flood-opacity="0.5"></feflood><fecomposite in2="offsetBlur" operator="in"></fecomposite><femerge><femergenode></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter></defs></svg></div></div></body></html>

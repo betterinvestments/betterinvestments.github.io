@@ -1,0 +1,448 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Technicals</title>
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <style>
+  .form-submit {
+    display: inline-block;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer; }
+    .form-submit:hover {
+      background: #4292dc; }
+  </style>
+</head>
+
+<!-- <div class="main"> -->
+  <!-- <section class="signup">
+      <div class="container"> -->
+      <h1 style="font-size:40px;" id="PageTitle">Alphabet Inc (GOOG) - 1 Year</h1>
+
+      <!-- Chart code -->
+      <!--Loads year 1 data by default-->
+      <script>
+          am4core.ready(function () {
+              load1Day();
+          });
+      </script>
+
+      <!--Loads common data and axes for all time periods-->
+      <script>
+          function loadCommonalities(chart, dateAxis) {
+
+              window.valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+              valueAxis.tooltip.disabled = true;
+              valueAxis.fontSize = 35;
+              valueAxis.extraMax = 0.2;
+
+              valueAxis.fill = am4core.color("#000000");
+
+              var series = chart.series.push(new am4charts.LineSeries());
+              series.dataFields.dateX = "year";
+              series.name = "Google";
+              series.dataFields.valueY = "Google";
+              series.tooltipText = "[#000]{valueY.value}[/]";
+              series.tooltip.background.fill = am4core.color("#00F");
+              series.tooltip.getStrokeFromObject = true;
+              series.tooltip.background.strokeWidth = 3;
+              series.tooltip.scale = 4;
+              series.tooltip.getFillFromObject = false;
+              series.fillOpacity = 0.9;
+              series.strokeWidth = 2;
+              series.stacked = true;
+
+          }
+      </script>
+
+
+      <!--Load 1 Year data-->
+      <script>
+
+          //Loads data for 1 day
+          function load1Day() {
+              document.getElementById("PageTitle").innerHTML = "Alphabet Inc (GOOG) - 24 Hours";
+
+              var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+              //Hard-coded chart data
+              chart.data = [{
+                  "year": "09:00",
+                  "Google": 1231.63,
+              }, {
+                  "year": "09:30",
+                  "Google": 1236.48,
+              }, {
+                  "year": "10:00",
+                  "Google": 1236.57,
+              }, {
+                  "year": "10:30",
+                  "Google": 1238.35,
+              }, {
+                  "year": "11:30",
+                  "Google": 1235.72,
+              }, , {
+                  "year": "12:30",
+                  "Google": 1230.72,
+              }, {
+                  "year": "13:00",
+                  "Google": 1228.72,
+              }, {
+                  "year": "14:00",
+                  "Google": 1232.72,
+              }, {
+                  "year": "14:30",
+                  "Google": 1227.72,
+              },
+              {
+                  "year": "15:00",
+                  "Google": 1226.72,
+              }, {
+                  "year": "15:30",
+                  "Google": 1232.30,
+              }, {
+                  "year": "16:00",
+                  "Google": 1238.30,
+              }
+
+              ];
+
+              chart.cursor = new am4charts.XYCursor();
+              chart.cursor.xAxis = dateAxis;
+              chart.scrollbarX = new am4core.Scrollbar();
+
+              am4core.useTheme(am4themes_animated);
+
+              chart.dateFormatter.inputDateFormat = "HH:mm";
+              var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+              dateAxis.renderer.minGridDistance = 60;
+              dateAxis.fontSize = 35;
+              dateAxis.startLocation = 0.5;
+              dateAxis.endLocation = 0.5;
+              dateAxis.baseInterval = {
+                  timeUnit: "minute",
+                  count: 30
+              }
+
+              //Shared commonalities with all graphs - takes chart data and axis labels
+              loadCommonalities(chart, dateAxis);
+
+              //Individual scalars
+              valueAxis.min = 1225;
+              valueAxis.max = 1240;
+          }
+
+          //Loads data for 5 day
+          function load5Day() {
+              document.getElementById("PageTitle").innerHTML = "Alphabet Inc (GOOG) - 5 Days";
+
+              var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+              //Hard-coded chart data
+              chart.data = [{
+                  "year": "01-01-12:00",
+                  "Google": 1222.96,
+              }, {
+                  "year": "01-01-15:30",
+                  "Google": 1228.56,
+              }, {
+                  "year": "01-02-09:00",
+                  "Google": 1229.74,
+              }, {
+                  "year": "01-02-16:00",
+                  "Google": 1234.78,
+              }, {
+                  "year": "01-03-09:00",
+                  "Google": 1226.21,
+              }, {
+                  "year": "01-03-16:00",
+                  "Google": 1235.66,
+              }, {
+                  "year": "01-04-09:00",
+                  "Google": 1232.39,
+              }, {
+                  "year": "01-04-16:00",
+                  "Google": 1238.22,
+              }, {
+                  "year": "01-05-12:00",
+                  "Google": 1232.48,
+              }, {
+                  "year": "01-05-16:00",
+                  "Google": 1241.48,
+              },
+              ];
+
+              chart.cursor = new am4charts.XYCursor();
+              chart.cursor.xAxis = dateAxis;
+              chart.scrollbarX = new am4core.Scrollbar();
+
+
+              am4core.useTheme(am4themes_animated);
+
+              chart.dateFormatter.inputDateFormat = "MM-dd-HH:mm";
+              var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+              dateAxis.renderer.minGridDistance = 60;
+              dateAxis.fontSize = 35;
+              dateAxis.startLocation = 0.5;
+              dateAxis.endLocation = 0.5;
+              dateAxis.baseInterval = {
+                  timeUnit: "hour",
+                  count: 12
+              }
+
+              //Shared commonalities with all graphs - takes chart data and axis labels
+              loadCommonalities(chart, dateAxis);
+
+              //Individual scalars
+              valueAxis.min = 1225;
+              valueAxis.max = 1240;
+          }
+
+          //Loads data for 1 month
+          function load1Month() {
+              document.getElementById("PageTitle").innerHTML = "Alphabet Inc (GOOG) - 1 Month";
+
+              var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+              //Hard-coded chart data
+              chart.data = [{
+                  "year": "08-15",
+                  "Google": 1225.96,
+              }, {
+                  "year": "08-18",
+                  "Google": 1235.26,
+              }, {
+                  "year": "08-22",
+                  "Google": 1228.38,
+              }, {
+                  "year": "08-26",
+                  "Google": 1241.77,
+              }, {
+                  "year": "08-30",
+                  "Google": 1236.11,
+              }, {
+                  "year": "09-03",
+                  "Google": 1235.01,
+              }, {
+                  "year": "09-07",
+                  "Google": 1238.44,
+              }, {
+                  "year": "09-11",
+                  "Google": 1227.15,
+              }, {
+                  "year": "09-15",
+                  "Google": 1230.56,
+              }, {
+                  "year": "09-19",
+                  "Google": 1225.67,
+              }
+              ];
+
+              chart.cursor = new am4charts.XYCursor();
+              chart.cursor.xAxis = dateAxis;
+              chart.scrollbarX = new am4core.Scrollbar();
+
+              am4core.useTheme(am4themes_animated);
+
+              chart.dateFormatter.inputDateFormat = "MM-dd";
+              var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+              dateAxis.renderer.minGridDistance = 60;
+              dateAxis.fontSize = 35;
+              dateAxis.startLocation = 0.5;
+              dateAxis.endLocation = 0.5;
+              dateAxis.baseInterval = {
+                  timeUnit: "day",
+                  count: 8
+              }
+
+              //Shared commonalities with all graphs - takes chart data and axis labels
+              loadCommonalities(chart, dateAxis);
+
+              //Individual scalars
+              valueAxis.min = 1225;
+              valueAxis.max = 1240;
+          }
+
+          //Loads data for 3 month
+          function load3Month() {
+              document.getElementById("PageTitle").innerHTML = "Alphabet Inc (GOOG) - 3 Month";
+
+              var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+              //Hard-coded chart data
+              chart.data = [{
+                  "year": "07-01-2019",
+                  "Google": 1225.96,
+              }, {
+                  "year": "07-15-2019",
+                  "Google": 1235.26,
+              }, {
+                  "year": "07-30-2019",
+                  "Google": 1228.38,
+              }, {
+                  "year": "08-01-2019",
+                  "Google": 1241.77,
+              }, {
+                  "year": "08-15-2019",
+                  "Google": 1236.11,
+              }, {
+                  "year": "08-25-2019",
+                  "Google": 1235.01,
+              }, {
+                  "year": "09-01-2019",
+                  "Google": 1238.44,
+              }, {
+                  "year": "09-15-2019",
+                  "Google": 1227.15,
+              }, {
+                  "year": "09-30-2019",
+                  "Google": 1230.56,
+              }
+              ];
+
+              chart.cursor = new am4charts.XYCursor();
+              chart.cursor.xAxis = dateAxis;
+              chart.scrollbarX = new am4core.Scrollbar();
+
+
+              am4core.useTheme(am4themes_animated);
+
+              chart.dateFormatter.inputDateFormat = "MM-dd-yyyy";
+              var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+              dateAxis.renderer.minGridDistance = 60;
+              dateAxis.fontSize = 35;
+              dateAxis.startLocation = 0.5;
+              dateAxis.endLocation = 0.5;
+              dateAxis.baseInterval = {
+                  timeUnit: "day",
+                  count: 5
+              }
+
+              //Shared commonalities with all graphs - takes chart data and axis labels
+              loadCommonalities(chart, dateAxis);
+
+              //Individual scalars
+              valueAxis.min = 1225;
+              valueAxis.max = 1240;
+          }
+
+          //Loads data for year
+          function load1Year() {
+              document.getElementById("PageTitle").innerHTML = "Alphabet Inc (GOOG) - 1 Year";
+
+              var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+              //Hard-coded chart data
+              chart.data = [{
+                  "year": "Jan-2019",
+                  "Google": 1045.85,
+              }, {
+                  "year": "Feb-2019",
+                  "Google": 1110.75,
+              }, {
+                  "year": "Mar-2019",
+                  "Google": 1140.99,
+              }, {
+                  "year": "Apr-2019",
+                  "Google": 1194.43,
+              }, {
+                  "year": "May-2019",
+                  "Google": 1168.08,
+              }, {
+                  "year": "Jun-2019",
+                  "Google": 1053.05,
+              }, {
+                  "year": "Jul-2019",
+                  "Google": 1097.95,
+              }, {
+                  "year": "Aug-2019",
+                  "Google": 1209.01,
+              }, {
+                  "year": "Sep-2019",
+                  "Google": 1168.39,
+              }
+              ];
+
+              chart.cursor = new am4charts.XYCursor();
+              chart.cursor.xAxis = dateAxis;
+              chart.scrollbarX = new am4core.Scrollbar();
+
+
+              am4core.useTheme(am4themes_animated);
+
+              chart.dateFormatter.inputDateFormat = "mmm-yyyy";
+              var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+              dateAxis.renderer.minGridDistance = 60;
+              dateAxis.fontSize = 35;
+              dateAxis.startLocation = 0.5;
+              dateAxis.endLocation = 0.5;
+              dateAxis.baseInterval = {
+                  timeUnit: "month",
+                  count: 1
+              }
+
+              //Shared commonalities with all graphs - takes chart data and axis labels
+              loadCommonalities(chart, dateAxis);
+              //Individual scalars
+              valueAxis.min = 1000;
+              valueAxis.max = 1200;
+          }
+
+      </script>
+
+      <script>
+        function playSound(){
+             var audio = document.getElementById("tune");
+             audio.play();
+                       }
+         </script>
+
+      <script>
+           function playVoice(){
+                var audio = document.getElementById("audio");
+                audio.play();
+                          }
+            </script>
+
+      <!-- HTML -->
+      <div id="chartdiv"></div>
+      <audio id="audio" src="sounds/goog-1d.mpeg" ></audio>
+      <audio id="tune" src="sounds/goog - 1d.mpeg" ></audio>
+      <!--loads buttons with listeners-->
+      <div>
+          <button type="button" class="form-submit" onclick="load1Day()" name="1Day" class="buttons">1D</button>
+          <button type="button" class="form-submit" onclick="load5Day()" name="5Day" class="buttons">5D</button>
+          <button type="button" class="form-submit" onclick="load1Month()" name="1Month" class="buttons">1M</button>
+          <button type="button" class="form-submit" onclick="load3Month()" name="3Month" class="buttons">3M</button>
+          <button type="button" class="form-submit" onclick="load1Year()" name="YTD" class="buttons">YTD</button>
+          <button type="button" class="form-submit" onclick="playSound()" name="play" class="buttons">Play Tune</button>
+          <button type="button" class="form-submit" onclick="playVoice()" name="play" class="buttons">Read Chart</button>
+
+      </div>
+    <!-- </div>
+</section> -->
+<!-- </div> -->
