@@ -49,7 +49,7 @@
       .form-submit:hover {
         background: #4292dc; }
     </style>
-    
+
   </head>
 
 
@@ -451,10 +451,68 @@
 
 
 <script>
-  function playSound(){
-       var audio = document.getElementById("tune");
-       audio.play();
-                 }
+  function playSound()
+  {
+      var audio = document.getElementById("audio1");
+       // audio.play();
+
+       if(document.getElementById("PageTitle").innerHTML == "Facebook Inc (FB) - 24 Hours")
+       {
+          data = [189.63, 176.48, 178.57, 180.35,171.72,173.72,172.72,178.72,184.72,181.72,180.30,185.30];
+        }
+        else if(document.getElementById("PageTitle").innerHTML == "Facebook Inc (FB) - 5 Days")
+        {
+          data = [180.96,170.56,150.74,190.78,145.21,155.66,158.39,159.22,165.48,177.48]
+        }
+        else if(document.getElementById("PageTitle").innerHTML == "Facebook Inc (FB) - 1 Month")
+        {
+          data = [150.96,155.26,148.38,171.77,166.11,165.01,148.44,187.15,190.56,185.67]
+        }
+        else if(document.getElementById("PageTitle").innerHTML == "Facebook Inc (FB) - 3 Month")
+        {
+          data = [122.96,124.26,123.38,128.77,132.11,135.01,140.44,144.15,150.56]
+        }
+        else
+        {
+          data = [150.26,155.31,159,163.43,120.85,121.75,122.99,135.43,140.08,145.05,148.95,155.01,175.39]
+        }
+
+          maxVal = Math.max(...data);
+          minVal = Math.min(...data);
+          index = 0;
+          console.log(minVal,maxVal);
+          diff = maxVal-minVal;
+          retVal = findSound(diff,(maxVal-data[index]));
+          audio.src='sounds/'+retVal.toString()+'.mp3';
+          audio.play();
+
+          audio.onended = function() {
+              if(index < data.length-1){
+                  index++;
+                  retVal = findSound(diff,(maxVal-data[index]));
+                  audio.src='sounds/'+retVal.toString()+'.mp3';
+                  console.log(audio.src)
+                  audio.play();
+              }
+          };
+          }
+  }
+  function findSound(diff, num)
+  {
+    console.log(num/diff);
+    if(num/diff<0.16)
+      return 6;
+    else if(num/diff<(2*0.16))
+      return 5;
+    else if(num/diff<(3*0.16))
+      return 4;
+    else if(num/diff<(4*0.16))
+      return 3;
+    else if(num/diff<(5*0.16))
+      return 2;
+    else
+      return 1;
+  }
    </script>
 
    <script>
@@ -464,8 +522,8 @@
                        }
          </script>
 
-<audio id="tune" src="fb - 5d.mpeg" ></audio>
-<audio id="audio" src="fb-5day.mpeg" ></audio>
+<audio id="audio1" src="sounds/1.mp3" ></audio>
+<audio id="audio" src="sounds/fb-5day.mpeg" ></audio>
 <!--loads buttons with listeners-->
 <div>
   <button type="button" class="form-submit" onclick="load1Day()" name="1Day" class="buttons">1D</button>
@@ -479,6 +537,3 @@
   <button type="button" class="form-submit" onclick="playVoice()" name="play" class="buttons">Read Chart</button>
 
 </div>
-
-
-<div hidden=""><div style="width: 100%; height: 100%; position: relative;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="group" style="width: 100%; height: 100%; overflow: visible;"><desc>JavaScript chart by amCharts</desc><defs><clippath id="id-142"><path></path></clippath><filter id="filter-id-147" width="200%" height="200%" x="-50%" y="-50%"><fegaussianblur result="blurOut" in="SourceGraphic" stdDeviation="1.5"></fegaussianblur><feoffset result="offsetBlur" dx="1" dy="1"></feoffset><feflood flood-color="#000000" flood-opacity="0.5"></feflood><fecomposite in2="offsetBlur" operator="in"></fecomposite><femerge><femergenode></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter></defs></svg></div></div></body></html>
